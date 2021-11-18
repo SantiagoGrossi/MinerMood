@@ -20,9 +20,6 @@ import {FormsModule} from '@angular/forms';
 import {DataTableModule} from'angular-4-data-table';
 
 import { HttpModule } from '@angular/http';
-import { MycardsComponent } from './mycards/mycards.component';
-import { CardFormComponent } from './card-form/card-form.component';
-import { EcardComponent } from './ecard/ecard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductService } from './product.service';
 import { ClientFormComponent } from './admin/client-form/client-form.component';
@@ -35,9 +32,6 @@ import { ClientService } from './services/client.service';
     BsNavbarComponent,
     HomeComponent,
     LoginComponent,
-    MycardsComponent,
-    CardFormComponent,
-    EcardComponent,
     ClientFormComponent,
     ClientsComponent,
 
@@ -56,9 +50,6 @@ import { ClientService } from './services/client.service';
     RouterModule.forRoot([
 
       { path: 'login', component: LoginComponent },
-      { path: '', component: MycardsComponent },
-      { path: 'cards/new', component: CardFormComponent },
-      { path: 'myCards', component: MycardsComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'clients/new', component: ClientFormComponent },
 
