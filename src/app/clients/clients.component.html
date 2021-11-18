@@ -1,0 +1,81 @@
+<p>
+  <a routerLink="/clients/new" class="btn btn-primary">Crear nuevo cliente</a>
+
+</p>
+<p>
+
+  <input type="text" class="form-control" placeholder="Search..." (keyup)="filter(query.value)" #query>
+</p>
+
+<data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+>
+<data-table-column
+  [property]="'name'"
+  [header]="'Name'"
+  [sortable]="true"
+  [resizable]="true"
+>
+
+<ng-template #dataTableCell let-item="item">
+  <a [routerLink]="['/client/', item.walletAdress]">{{item.name}} {{item.subname}}</a>
+  
+</ng-template>
+
+
+</data-table-column>
+
+
+<data-table-column
+  [property]="'currency'"
+  [header]="'Currency'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+<data-table-column
+  [property]="'fee'"
+  [header]="'Fee'"
+  [sortable]="true"
+  [resizable]="true"
+>
+  <ng-template #dataTableCell let-item="item">
+    {{item.fee}}%
+  </ng-template>
+</data-table-column>
+
+<data-table-column
+  [property]="'currency'"
+  [header]="'Mining on'"
+  [sortable]="true"
+  [resizable]="true"
+>
+  <ng-template #dataTableCell let-item="item">
+    {{ item.currency}}
+  </ng-template>
+</data-table-column>
+
+<data-table-column
+  [property]="'phone'"
+  [header]="'Phone'"
+  [sortable]="true"
+  [resizable]="true"
+>
+  
+</data-table-column>
+
+<data-table-column
+  [property]="'email'"
+  [header]="'Email'"
+  [sortable]="true"
+  [resizable]="true"
+>
+  <ng-template #dataTableCell let-item="item">
+    {{ item.email}}
+  </ng-template>
+</data-table-column>
+
+
+</data-table>

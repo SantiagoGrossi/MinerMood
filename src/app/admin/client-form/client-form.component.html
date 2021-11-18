@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+
+      <div class="form-group">
+        <div class="input-group">
+          <input #name="ngModel" ngModel type="text" name="name" placeholder="Client name" id="name" class="form-control" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          <div *ngIf="name.errors.required">Name is a required field.</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="input-group">
+          <input #subname="ngModel" ngModel type="text" name="subname" placeholder="Client subname" id="subname" class="form-control" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="subname.touched && subname.invalid">
+          <div *ngIf="subname.errors.required">Subname is a required field.</div>
+        </div>
+        
+      </div>
+
+      <div class="form-group">
+        <select #c ngModel name="currency" id="currency" class="form-control" (change)="changeCurrencyToMine(c.value)">
+          <option *ngFor="let c of currencies$ | async" [value]="c.name">{{c.name}}</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <div class="input group">
+          <input #adress="ngModel" ngModel type="text" ngModel name="adress" placeholder="Client adress" id="adress" class="form-control" required>
+          <div class="alert alert-danger" *ngIf="adress.touched && adress.invalid">
+            <div *ngIf="adress.errors.required">Adress is a required field.</div>
+          </div>
+        </div>
+        
+      </div>
+    
+      <div class="form-group">
+        <div class="input-group">
+          <input #email="ngModel" ngModel type="text" name="email" placeholder="Client email" id="email" class="form-control" required email>
+        </div>
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors.required">Email is a required field.</div>
+          <div *ngIf="email.errors.email">Email is not in a correct format.</div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="input-group">
+          <input #phone="ngModel" ngModel type="text" name="phone" placeholder="Client phone" id="phone" class="form-control" required number>
+        </div>
+        <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+          <div *ngIf="phone.errors.required">Phone is a required field.</div>
+          <div *ngIf="phone.errors.number">Phone is not in a correct format.</div>
+        </div>
+        
+      </div>
+    
+      <div class="form-group">
+        <div class="input-group">
+          <input #fee="ngModel" ngModel type="text" name="fee" placeholder="Cliente fee in %" id="fee" class="form-control" required number>
+        </div>
+        
+        <div class="alert alert-danger" *ngIf="fee.touched && fee.invalid">
+          <div *ngIf="fee.errors.required">Fee is a required field.</div>
+          <div *ngIf="fee.errors.number">Fee is not a number.</div>
+        </div>
+    
+      </div>
+    
+      
+    
+      <div class="form-group">
+        <div class="input-group">
+          <input #walletAdress="ngModel" ngModel type="text" name="walletAdress" placeholder="Client wallet adress" id="walletAdress" class="form-control" required>
+        </div>
+    
+        <div class="alert alert-danger" *ngIf="walletAdress.touched && walletAdress.invalid">
+          <div *ngIf="fee.errors.required">Wallet adress is a required field.</div>
+        </div>
+    
+      </div>
+    
+      <button class="btn btn-primary">Crear cliente</button>
+    
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card" style="width: 18rem;">
+      <img [src]="imgUrl" class="card-img-top" alt="Cripto logo">
+      <div class="card-body">
+        <div *ngIf="((name.value != '') && (subname.value != ''))"><h5 class="card-title">{{name.value}} {{subname.value}} will mine {{willmine}}</h5></div>
+        <p class="card-text">{{adress.value}}</p>
+        <p class="card-text">{{email.value}}</p>
+        <p class="card-text">{{phone.value}}</p>
+        <p class="card-text">{{walletAdress.value}}</p>
+        <p class="card-text">{{fee.value}}%</p>
+        <a href="https://whattomine.com/" class="btn btn-primary">Precalcular rentabilidad</a>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,48 @@
+
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)"> 
+      <div class="form-group">
+        <input #title="ngModel" [(ngModel)]="card.title" name="title" type="text" id="title" class="form-control" required placeholder="Titulo de mi nueva ecard">
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">El título es un campo requerido para crear una ecard nueva.</div>
+      </div>
+    
+      <div class="form-group">
+        <input #description="ngModel" [(ngModel)]="card.description" name="description" type="text" id="description" class="form-control" required placeholder="Descripción de mi nueva ecard">
+        <div class="alert alert-danger" *ngIf="description.touched && description.invalid">La descripción es un campo requerido para crear una ecard nueva.</div>
+      </div>
+
+      <div class="form-group">
+        <input #fee="ngModel" [(ngModel)]="card.fee" name="description" type="text" id="fee" class="form-control" required placeholder="Comision de cliente">
+        <div class="alert alert-danger" *ngIf="fee.touched && fee.invalid">Comision requerido.</div>
+      </div>
+
+
+      <div class="form-group">
+        <input #email="ngModel" [(ngModel)]="card.email" name="email" type="text" id="email" class="form-control" required placeholder="Email de mi nueva ecard">
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">Email es un campo requerido para crear una ecard nueva.</div>
+      </div>
+      
+     
+
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input #imageUrl="ngModel" [(ngModel)]="card.imageUrl" name="imageUrl" type="text" id="imageUrl" class="form-control" required url>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+          <div *ngIf="imageUrl.errors.required">Image url is required</div>
+          <div *ngIf="imageUrl.errors.url">Image url is not a valid url</div>
+        </div>
+      </div>
+      
+    
+    
+      <button class="btn btn-primary">Crear ecard</button>
+      <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <ecard [card]="card"></ecard>
+  </div>
+
+</div>
+
