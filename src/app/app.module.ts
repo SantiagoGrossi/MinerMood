@@ -10,7 +10,6 @@ import {CustomFormsModule} from 'ng2-validation';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
-
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard as AuthGuard } from './auth-guard.service';
@@ -18,7 +17,6 @@ import { UserService } from './user.service';
 import { AdminAuthGuard} from './admin-auth-guard.service';
 import {FormsModule} from '@angular/forms';
 import {DataTableModule} from'angular-4-data-table';
-
 import { HttpModule } from '@angular/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductService } from './product.service';
@@ -26,6 +24,9 @@ import { ClientFormComponent } from './admin/client-form/client-form.component';
 import { ClientsComponent } from './clients/clients.component';
 import { CurrencyService } from './services/currency.service';
 import { ClientService } from './services/client.service';
+import { WalletAdressComponent } from './wallet-adress/wallet-adress.component';
+import { EthermineService } from './ethermine.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { ClientService } from './services/client.service';
     LoginComponent,
     ClientFormComponent,
     ClientsComponent,
+    WalletAdressComponent,
 
 
   ],
@@ -46,12 +48,14 @@ import { ClientService } from './services/client.service';
     CustomFormsModule,
     DataTableModule,
     HttpModule,
+    HttpClientModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
 
       { path: 'login', component: LoginComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'clients/new', component: ClientFormComponent },
+      { path: 'walletAdress/:walletAdress', component: WalletAdressComponent },
 
  
 
@@ -65,7 +69,10 @@ import { ClientService } from './services/client.service';
     AdminAuthGuard,
     ProductService,
     CurrencyService,
-    ClientService
+    ClientService,
+    EthermineService,
+    HttpClientModule
+    
 
   ],
   bootstrap: [AppComponent]
