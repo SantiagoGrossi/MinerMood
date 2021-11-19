@@ -27,11 +27,11 @@ export class WalletAdressComponent implements OnInit {
     {
         this.ethService.getMinerStatics(this.currentWallet).subscribe(data =>{
         this.status = data.status;
-        this.unpaid = data.data.currentStatistics.unpaid;
+        this.unpaid = (data.data.currentStatistics.unpaid / 1000000000000000000).toFixed(3);
         this.workersQuantity = data.data.currentStatistics.activeWorkers;
         this.lastSeen = data.data.currentStatistics.lastSeen;
-        this.reportedHashrate = data.data.currentStatistics.reportedHashrate;
-        this.currentHashrate = data.data.currentStatistics.currentHashrate;
+        this.reportedHashrate = (data.data.currentStatistics.reportedHashrate/1000000).toFixed(1);
+        this.currentHashrate = (data.data.currentStatistics.currentHashrate/1000000).toFixed(1);
         
 
       });
