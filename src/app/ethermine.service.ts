@@ -14,7 +14,6 @@ export class EthermineService {
    
    
    getMinerStatics(walletAdress:string){
-    console.log(walletAdress + 'from service');
     return this.http.get<any>(this.serviceUrlMiner + walletAdress+'/dashboard');
   }
  

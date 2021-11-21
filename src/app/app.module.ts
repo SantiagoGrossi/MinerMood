@@ -27,6 +27,8 @@ import { ClientService } from './services/client.service';
 import { WalletAdressComponent } from './wallet-adress/wallet-adress.component';
 import { EthermineService } from './ethermine.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UsdService } from './services/external/usd.service';
+import { CryptosService } from './services/external/cryptos.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,9 @@ import { HttpClientModule } from '@angular/common/http';
     CurrencyService,
     ClientService,
     EthermineService,
-    HttpClientModule
+    HttpClientModule,
+    UsdService,
+    CryptosService
     
 
   ],

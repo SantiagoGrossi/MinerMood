@@ -1,11 +1,86 @@
-<p>
 
-  {{currentWallet}}
-  ----------------------API--------------------
+<div class="dashboard-overview dashboard-text">
+  <div class="walletClienteAdress"> <span class="{{status}}">{{currentWallet}}</span></div>
+  <div class="stats">
 
-</p>
-<div>{{status}}</div>
-<div>{{unpaid}} ethereum</div>
-<div>{{workersQuantity}} workers</div>
-<div>reported hashrate{{reportedHashrate}} mh/s</div>
-<div> currenthashrate{{currentHashrate}} mh/s</div>
+    <div class="col-md-4">
+      <div class="workers">
+      <div class="header">
+        <span class="genericSpan">workers</span>
+      </div>
+      <div class="body">
+        {{workersQuantity}} rig active
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="unpaid"(click)="changeCurrency()">
+      <div class="header">
+        <span class="genericSpan">Unpaid balance</span>
+      </div>
+      <div class="body">
+        {{currentUnpaid}} {{currentCurrency}}
+      </div>
+      
+    </div>
+  </div>
+
+    <div class="col-md-4">
+      <div class="shares">
+        <div class="header">
+          <span class="genericSpan">Shares</span>
+        </div>
+        <div class="body">
+          {{validShares}}/{{staleShares}}/{{invalidShares}}
+        </div>
+         
+      </div>
+    </div>
+    
+  </div>
+  <div class="charts">
+
+    <div class="col-md-4">
+      <div class="header">
+        <span class="genericSpan">Status</span>
+      </div>
+
+      <div class="body">
+        {{status}}
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="header">
+        <span class="genericSpan">
+          reported hashrate
+        </span>
+        
+      </div>
+      <div class="body">
+        {{reportedHashrate}} mh/s
+      </div>
+      <div></div>
+    </div>
+   
+      
+      
+    <div class="col-md-4">
+      <div class="header">
+        <span class="genericSpan">currenthashrate</span>
+      </div>
+      <div class="body">
+        {{currentHashrate}} mh/s
+      </div>
+    </div>
+    
+
+
+  </div>
+ 
+  
+  
+</div>
+

@@ -1,0 +1,58 @@
+.dashboard-text{
+    font-size:2rem;
+    font-family: Roboto,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: .45px;
+    text-align: center;
+}
+.genericSpan{
+    font-size: .9rem;
+    font-family: Roboto,sans-serif;
+    letter-spacing: .11px;
+    font-weight: 400;
+}
+.stats{
+    display: flex;
+    flex-wrap: wrap;
+}
+.charts{
+    
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.workers{
+    margin: 1.5rem;
+    border-bottom: 1px solid;
+}
+.status{
+    margin: 1.5rem;
+}
+.unpaid{
+    margin: 1.5rem;
+    border-bottom: 1px solid;
+    
+}
+.unpaid:hover{
+    cursor:pointer
+    
+}
+.shares{
+    margin: 1.5rem;
+    border-bottom: 1px solid;
+}
+.card-header{
+    justify-content: space-between;
+    display: flex;
+}
+.walletClienteAdress{
+    width: 100%;
+    background-color: #F0F0F0;
+    left: 1px;
+    position: fixed;
+    height: 7%;
+    margin-top: -1.3%;
+}
