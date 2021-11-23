@@ -35,9 +35,9 @@ export class WalletAdressComponent implements OnInit {
       this.dolarBlueValue = dolarInfo.venta;
     });
 
-    //this.cryptoService.getEthereumValue().subscribe(ethereum=>{
-      //this.ethereumValue = ethereum.value;
-    //});
+    this.cryptoService.getEthereumValue().subscribe(ethereum=>{
+      this.ethereumValue = ethereum.data.amount;
+    });
 
     this.currentWallet = this.route.snapshot.paramMap.get('walletAdress');
     if (this.currentWallet.length > 0)
@@ -71,12 +71,17 @@ export class WalletAdressComponent implements OnInit {
    
   }
   changeCurrency(){
-    if(this.currentCurrency =='USD'){
+    if(this.currentCurrency =='Ethereum'){
+      this.currentUnpaid = (this.unpaid * this.ethereumValue).toFixed(2);
+      this.currentCurrency = 'USD'
+    }else if(this.currentCurrency =='USD'){
+      this.currentUnpaid = ((this.ethereumValue * this.unpaid)*this.dolarBlueValue).toFixed(2);
+      this.currentCurrency = 'ARS'
+    }
+
+    else if(this.currentCurrency =='ARS'){
       this.currentUnpaid = this.unpaid;
       this.currentCurrency = 'Ethereum'
-    }else{
-      //this.currentUnpaid = ((this.enthereumValue * this.unpaid)*this.dolarBlueValue);
-      this.currentCurrency = 'ARS'
     }
    
   }
