@@ -53,7 +53,7 @@ import { CryptosService } from './services/external/cryptos.service';
     HttpClientModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-
+      { path: '', component: ClientsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'clients/new', component: ClientFormComponent },
