@@ -2,3 +2,15 @@
 .dropdown-toggle { 
   cursor: pointer;
 }
+
+@media (max-width: 750px) {
+  .nav-item .dropdown{
+    position:absolute;
+    right: 10px;
+  }
+  .navBarDefault{
+    position:absolute;
+    right: 10px;
+    top:20px;
+  }
+}
