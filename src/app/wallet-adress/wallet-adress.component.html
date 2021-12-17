@@ -50,9 +50,18 @@
         <span class="genericSpan">Status</span>
       </div>
 
-      <div class="body">
+      <div class="body" *ngIf="notWorking == true">
         {{status}}
       </div>
+      <div class="body" *ngIf="notWorking == false">
+        <a class="errorHashrate" href="https://api.whatsapp.com/send?phone=+549221507-2198">Ups, algo anda mal</a>
+        <a class="imgErrorWsp" href="https://api.whatsapp.com/send?phone=+549221507-2198">
+          <img class="imgErrorWsp" src="https://cdn.icon-icons.com/icons2/729/PNG/512/whatsapp_icon-icons.com_62756.png" 
+          alt="Algo anda mal..."></a>
+
+      </div>
+      
+
     </div>
 
     <div class="col-md-4">

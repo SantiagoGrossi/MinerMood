@@ -62,3 +62,11 @@
     display: block;
     margin: auto;
 }
+.errorHashrate{
+    color:#f54275;
+    font-size: 20px;
+}
+.imgErrorWsp{
+    height: 42px;
+    width: 42px;
+}

@@ -28,6 +28,7 @@ export class WalletAdressComponent implements OnInit {
   dolarBlueValue;
   ethereumValue;
   animationRunning = false;
+  notWorking = true;
   constructor( private route: ActivatedRoute, private ethService: EthermineService,
     private dolarService: UsdService, private cryptoService: CryptosService) {
     
@@ -43,6 +44,7 @@ export class WalletAdressComponent implements OnInit {
     this.currentWallet = this.route.snapshot.paramMap.get('walletAdress');
     if (this.currentWallet.length > 0)
     {
+      
         this.ethService.getMinerStatics(this.currentWallet).subscribe(data =>{
         this.status = data.status;
         this.unpaid = (data.data.currentStatistics.unpaid / 1000000000000000000).toFixed(3);
@@ -54,6 +56,10 @@ export class WalletAdressComponent implements OnInit {
         this.invalidShares = data.data.currentStatistics.invalidShares;
         this.staleShares = data.data.currentStatistics.staleShares;
         this.validShares = data.data.currentStatistics.validShares;
+        this.notWorking = this.reportedHashrate>30;
+        console.log(this.notWorking);
+
+        
         
 
       });
@@ -71,6 +77,7 @@ export class WalletAdressComponent implements OnInit {
   ngOnInit() {
    
   }
+ 
   animateChangeCurrency(){
     this.animationRunning = true;
     setTimeout(()=>{                          
