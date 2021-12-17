@@ -56,3 +56,9 @@
     height: 7%;
     margin-top: -1.3%;
 }
+.loadinggif{
+    height: 78px;
+    width: 78px;
+    display: block;
+    margin: auto;
+}

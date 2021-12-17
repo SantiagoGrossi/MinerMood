@@ -26,7 +26,8 @@ export class WalletAdressComponent implements OnInit {
   currentUnpaid;
   currentCurrency ="Ethereum";
   dolarBlueValue;
-  ethereumValue
+  ethereumValue;
+  animationRunning = false;
   constructor( private route: ActivatedRoute, private ethService: EthermineService,
     private dolarService: UsdService, private cryptoService: CryptosService) {
     
@@ -70,7 +71,16 @@ export class WalletAdressComponent implements OnInit {
   ngOnInit() {
    
   }
+  animateChangeCurrency(){
+    this.animationRunning = true;
+    setTimeout(()=>{                          
+      this.animationRunning = false;
+    }, 500);
+   
+  }
   changeCurrency(){
+    this.animateChangeCurrency();
+    
     if(this.currentCurrency =='Ethereum'){
       this.currentUnpaid = (this.unpaid * this.ethereumValue).toFixed(2);
       this.currentCurrency = 'USD'

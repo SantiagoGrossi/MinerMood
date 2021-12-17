@@ -16,12 +16,15 @@
   </div>
 
   <div class="col-md-4">
-    <div class="unpaid"(click)="changeCurrency()">
-      <div class="header">
+    <div class="unpaid" (click)="changeCurrency()">
+      <div *ngIf="!animationRunning" class="header">
         <span class="genericSpan">Unpaid balance</span>
       </div>
-      <div class="body">
+      <div class="body" *ngIf="!animationRunning">
         {{currentUnpaid}} {{currentCurrency}}
+      </div>
+      <div class="body loadinggif" *ngIf="animationRunning">
+        <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
       </div>
       
     </div>
