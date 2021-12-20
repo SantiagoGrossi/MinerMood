@@ -50,7 +50,6 @@ import { CryptosService } from './services/external/cryptos.service';
     CustomFormsModule,
     DataTableModule,
     HttpModule,
-    FontAwesomeModule,
     HttpClientModule,
     
     NgbModule.forRoot(),

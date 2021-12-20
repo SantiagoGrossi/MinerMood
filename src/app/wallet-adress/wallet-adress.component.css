@@ -64,6 +64,11 @@
     width: 78px;
     display: block;
     margin: auto;
+   
+}
+.loadinggif:hover{
+    cursor: pointer;
+   
 }
 .errorHashrate{
     color:#f54275;
