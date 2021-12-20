@@ -50,7 +50,7 @@
         <span class="genericSpan">Status</span>
       </div>
 
-      <div class="body" *ngIf="notWorking == true">
+      <div class="body miningStatusOk" *ngIf="notWorking == true">
         {{status}}
       </div>
       <div class="body" *ngIf="notWorking == false">
@@ -87,9 +87,53 @@
         {{currentHashrate}} mh/s
       </div>
     </div>
+
+
+  </div>
+  <i (click)="changeProfitTimeLapse()" title="asd" data-toggle="tooltip" class="fa fa-random changeProfitTimeLapse" ></i>
+  <div class="tooltip">
+    <span class="tooltiptext">Click para cambiar timelapse de recomepnsa</span>
+  </div>
+  
+
+  <div class="currentPayouts">
     
+    <div class="col-md-4">
+      <div *ngIf="!animationRunning" class="header">
+        <span class="genericSpan">Dólar</span>
+      </div>
+      <div *ngIf="!animationRunning" class="body">
+        {{dailyDolares}} USD
+      </div>
+      <div class="body loadinggif" *ngIf="animationRunning">
+        <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
+      </div>
+    </div>
 
+    <div class="col-md-4">
+      <div *ngIf="!animationRunning" class="header">
+        <span class="genericSpan">Ethéreum</span>
+      </div>
+      <div *ngIf="!animationRunning" class="body">
+        {{dailyEth}} ETH
+      </div>
+      <div class="body loadinggif" *ngIf="animationRunning">
+        <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
+      </div>
+    </div>
 
+    <div class="col-md-4">
+      <div *ngIf="!animationRunning" class="header">
+        <span class="genericSpan">Ars</span>
+      </div>
+      <div *ngIf="!animationRunning" class="body">
+        {{dailyPesos}} ARS
+      </div>
+      <div class="body loadinggif" *ngIf="animationRunning">
+        <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
+      </div>
+    </div>
+    
   </div>
  
   

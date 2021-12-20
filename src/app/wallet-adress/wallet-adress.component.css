@@ -18,11 +18,14 @@
     display: flex;
     flex-wrap: wrap;
 }
-.charts{
-    
+.charts{ 
     display: flex;
     flex-wrap: wrap;
-   
+    margin-bottom: 5%;
+}
+.currentPayouts{ 
+    display: flex;
+    flex-wrap: wrap;
 }
 .workers{
     margin: 1.5rem;
@@ -69,4 +72,13 @@
 .imgErrorWsp{
     height: 42px;
     width: 42px;
+}
+.miningStatusOk{
+    color:#5ad18c
+}
+
+  
+
+.changeProfitTimeLapse:hover{
+    cursor: pointer;
 }
