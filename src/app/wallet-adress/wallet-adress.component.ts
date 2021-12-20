@@ -44,10 +44,10 @@ export class WalletAdressComponent implements OnInit {
   indexArrayChange = 1;
 
   public arrayChangeProfit:Array<ArrayChangeProfitObject> = [
-    {id: 1, timeLapse: 'Diary', days: 1},
-    {id: 2, timeLapse: 'Weekly', days: 7},
-    {id: 3, timeLapse: 'Monthly', days: 30},
-    {id: 4, timeLapse: 'Monthly', days: 30},
+    {id: 1, timeLapse: 'Diario', days: 1},
+    {id: 2, timeLapse: 'Semanal', days: 7},
+    {id: 3, timeLapse: 'Mensual', days: 30},
+    {id: 4, timeLapse: 'Semanal', days: 30},
 ];
 
   constructor( private route: ActivatedRoute, private ethService: EthermineService,
