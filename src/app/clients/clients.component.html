@@ -20,7 +20,7 @@
 >
 
 <ng-template #dataTableCell let-item="item">
-  <a [routerLink]="['/walletAdress', item.walletAdress]">{{item.name}} {{item.subname}}</a>
+  <a [routerLink]="['/walletAdress', item.walletAdress,'clientId', item.$key]">{{item.name}} {{item.subname}}</a>
   
 </ng-template>
 

@@ -58,7 +58,7 @@ import { CryptosService } from './services/external/cryptos.service';
       { path: 'login', component: LoginComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'clients/new', component: ClientFormComponent },
-      { path: 'walletAdress/:walletAdress', component: WalletAdressComponent },
+      { path: 'walletAdress/:walletAdress/clientId/:clientId', component: WalletAdressComponent },
 
  
 

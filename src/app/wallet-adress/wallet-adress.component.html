@@ -1,15 +1,26 @@
 
 <div class="dashboard-overview dashboard-text">
-  <div class="walletClienteAdress"> <span class="{{status}}">{{currentWallet}}</span></div>
+  <div class="walletBar">
+    <div class="walletClienteAdress">
+      <span class="genericSpanTitle">{{currentWallet}}</span>
+      
+   </div>
+   <div class="walletClienteName">
+    <span class="genericSpan">{{client.name}}
+      {{client.subname}}</span>
+   </div>
+  </div>
+  
+  
   <div class="stats">
 
     <div class="col-md-4">
       <div class="workers">
       <div class="header">
-        <span class="genericSpan">workers</span>
+        <span class="genericSpanTitle">workers</span>
       </div>
       <div class="body">
-        {{workersQuantity}} rig active
+        <span class="genericSpan">{{workersQuantity}} rig active</span>
       </div>
       
     </div>
@@ -18,10 +29,10 @@
   <div class="col-md-4">
     <div class="unpaid" (click)="changeCurrency()">
       <div *ngIf="!animationRunning" class="header">
-        <span class="genericSpan">Unpaid balance</span>
+        <span class="genericSpanTitle">Unpaid balance</span>
       </div>
       <div class="body" *ngIf="!animationRunning">
-        {{currentUnpaid}} {{currentCurrency}}
+        <span class="genericSpan">{{currentUnpaid}} {{currentCurrency}}</span>
       </div>
       <div class="body loadinggif" *ngIf="animationRunning">
         <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
@@ -33,10 +44,10 @@
     <div class="col-md-4">
       <div class="shares">
         <div class="header">
-          <span class="genericSpan">Shares</span>
+          <span class="genericSpanTitle">Shares</span>
         </div>
         <div class="body">
-          {{validShares}}/{{staleShares}}/{{invalidShares}}
+          <span class="genericSpan">{{validShares}}/{{staleShares}}/{{invalidShares}}</span>
         </div>
          
       </div>
@@ -47,7 +58,7 @@
 
     <div class="col-md-4">
       <div class="header">
-        <span class="genericSpan">Status</span>
+        <span class="genericSpanTitle">Status</span>
       </div>
 
       <div class="body miningStatusOk" *ngIf="notWorking == true">
@@ -66,13 +77,13 @@
 
     <div class="col-md-4">
       <div class="header">
-        <span class="genericSpan">
-          reported hashrate
+        <span class="genericSpanTitle">
+          Reported hashrate
         </span>
         
       </div>
       <div class="body">
-        {{reportedHashrate}} mh/s
+        <span class="genericSpan">{{reportedHashrate}} mh/s</span>
       </div>
       <div></div>
     </div>
@@ -81,27 +92,27 @@
       
     <div class="col-md-4">
       <div class="header">
-        <span class="genericSpan">currenthashrate</span>
+        <span class="genericSpanTitle">Current hashrate</span>
       </div>
       <div class="body">
-        {{currentHashrate}} mh/s
+        <span class="genericSpan">{{currentHashrate}} mh/s</span>
       </div>
     </div>
 
 
   </div>
   <img class="loadinggif" (click)="changeProfitTimeLapse()" src="../../assets/exchange.png">
-  <span>{{arrayChangeProfit[indexArrayChange - 1].timeLapse}}</span>
+  <span class="genericSpanBig">{{arrayChangeProfit[indexArrayChange - 1].timeLapse}}</span>
   
 
   <div class="currentPayouts">
     
     <div class="col-md-4">
       <div *ngIf="!animationRunning" class="header">
-        <span class="genericSpan">Dólar</span>
+        <span class="genericSpanTitle">Dólar</span>
       </div>
       <div *ngIf="!animationRunning" class="body">
-        {{dailyDolares}} USD
+        <span class="genericSpan">{{dailyDolares}} USD</span>
       </div>
       <div class="body loadinggif" *ngIf="animationRunning">
         <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
@@ -110,10 +121,11 @@
 
     <div class="col-md-4">
       <div *ngIf="!animationRunning" class="header">
-        <span class="genericSpan">Ethéreum</span>
+        <span class="genericSpanTitle">Ethéreum</span>
       </div>
       <div *ngIf="!animationRunning" class="body">
-        {{dailyEth}} ETH
+        <span class="genericSpan">{{dailyEth}} ETH</span>
+        
       </div>
       <div class="body loadinggif" *ngIf="animationRunning">
         <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">
@@ -122,10 +134,11 @@
 
     <div class="col-md-4">
       <div *ngIf="!animationRunning" class="header">
-        <span class="genericSpan">Ars</span>
+        <span class="genericSpanTitle">Ars</span>
       </div>
       <div *ngIf="!animationRunning" class="body">
-        {{dailyPesos}} ARS
+        <span class="genericSpan">{{dailyPesos}} ARS</span>
+        
       </div>
       <div class="body loadinggif" *ngIf="animationRunning">
         <img class="loadinggif" src="https://static.wixstatic.com/media/1349d5_c835f98714b4433183228f0469c2ebce~mv2.gif" alt="Loading...">

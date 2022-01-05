@@ -6,7 +6,9 @@ import { CryptosService } from '../services/external/cryptos.service';
 import { UsdService } from '../services/external/usd.service';
 import {ArrayChangeProfitObject} from '../models/ArrayChangeProfitObject';
 import { asTextData } from '@angular/core/src/view';
-
+import { ClientService } from '../services/client.service';
+import { Subscription } from 'rxjs';
+import 'rxjs/add/operator/take'; 
 
 @Component({
   selector: 'app-wallet-adress',
@@ -14,7 +16,8 @@ import { asTextData } from '@angular/core/src/view';
   styleUrls: ['./wallet-adress.component.css']
 })
 export class WalletAdressComponent implements OnInit {
-
+  client = {};
+  subscription : Subscription;
   currentWallet:string;
   status;
   workerName;
@@ -42,6 +45,7 @@ export class WalletAdressComponent implements OnInit {
   indiceDificultad;
   valorMhs;
   indexArrayChange = 1;
+  clientId;
 
   public arrayChangeProfit:Array<ArrayChangeProfitObject> = [
     {id: 1, timeLapse: 'Diario', days: 1},
@@ -51,12 +55,13 @@ export class WalletAdressComponent implements OnInit {
 ];
 
   constructor( private route: ActivatedRoute, private ethService: EthermineService,
-    private dolarService: UsdService, private cryptoService: CryptosService) {
+    private dolarService: UsdService, private cryptoService: CryptosService, private clientService: ClientService) {
     
     
     this.dolarService.getDolarBlueValue().subscribe(dolarInfo=>{
       this.dolarBlueValue = dolarInfo.venta;
     });
+    
 
     this.ethService.getDificulty().subscribe(data=>{
       this.dificultadActual = 0.000001 * data.data.hashrate.toFixed();
@@ -68,9 +73,9 @@ export class WalletAdressComponent implements OnInit {
     });
 
     this.currentWallet = this.route.snapshot.paramMap.get('walletAdress');
+    this.clientId = this.route.snapshot.paramMap.get('clientId');
     if (this.currentWallet.length > 0)
     {
-      
         this.ethService.getMinerStatics(this.currentWallet).subscribe(data =>{
         this.status = data.status;
         this.unpaid = (data.data.currentStatistics.unpaid / 1000000000000000000).toFixed(3);
@@ -93,6 +98,9 @@ export class WalletAdressComponent implements OnInit {
         this.dailyPesos = (this.dailyDolares * 200).toFixed(); 
         
 
+        //get user
+        this.clientService.getClientByUserId(this.clientId).take(1).subscribe(c => this.client = c);
+        //
     });
        
       
