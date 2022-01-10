@@ -8,6 +8,8 @@ import {ArrayChangeProfitObject} from '../models/ArrayChangeProfitObject';
 import { asTextData } from '@angular/core/src/view';
 import { ClientService } from '../services/client.service';
 import { Subscription } from 'rxjs';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import 'rxjs/add/operator/take'; 
 
 @Component({
@@ -46,6 +48,7 @@ export class WalletAdressComponent implements OnInit {
   valorMhs;
   indexArrayChange = 1;
   clientId;
+  totalAngularPackages;
 
   public arrayChangeProfit:Array<ArrayChangeProfitObject> = [
     {id: 1, timeLapse: 'Diario', days: 1},
@@ -55,7 +58,8 @@ export class WalletAdressComponent implements OnInit {
 ];
 
   constructor( private route: ActivatedRoute, private ethService: EthermineService,
-    private dolarService: UsdService, private cryptoService: CryptosService, private clientService: ClientService) {
+    private dolarService: UsdService, private cryptoService: CryptosService, private clientService: ClientService,
+    private http: HttpClient) {
     
     
     this.dolarService.getDolarBlueValue().subscribe(dolarInfo=>{
@@ -100,6 +104,11 @@ export class WalletAdressComponent implements OnInit {
 
         //get user
         this.clientService.getClientByUserId(this.clientId).take(1).subscribe(c => this.client = c);
+
+        this.http.get<any>('http://localhost:59328/Api/IssuesApi').subscribe(data => {
+          this.totalAngularPackages = data;
+          console.log(data);
+        }) 
         //
     });
        

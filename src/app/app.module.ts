@@ -18,6 +18,7 @@ import { AdminAuthGuard} from './admin-auth-guard.service';
 import {FormsModule} from '@angular/forms';
 import {DataTableModule} from'angular-4-data-table';
 import { HttpModule } from '@angular/http';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductService } from './product.service';
 import { ClientFormComponent } from './admin/client-form/client-form.component';
