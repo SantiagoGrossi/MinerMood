@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
 import { ClientService } from '../services/client.service';
 import { DataTableResource } from 'angular-4-data-table';
 import { Client } from '../models/client';
@@ -19,18 +18,14 @@ export class ClientsComponent implements OnInit {
   clients$;
 
   constructor(private clientService: ClientService) { 
-    console.log(this.clientService.getAll());
     this.subscription = this.clientService.getAll()
       .subscribe(clients =>{
         this.filteredClients = this.clients = clients;
         this.initializeTable(clients);
-        console.log(clients);
       })
   }
 
   ngOnInit() {
-    console.log(this.clients);
-    console.log(this.clientService.getAll());
   }
   private initializeTable( clients: Client[]){
     this.tableResource = new DataTableResource(clients);
