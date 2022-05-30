@@ -3,11 +3,12 @@ import { ShoppingCart } from "./shopping-cart";
 export class Order{
     datePlaced: number;
     items: any[];
+    shipped: boolean;
 
 
     constructor(public userId:string, public shipping: any, shoppingCart: ShoppingCart){
         this.datePlaced = new Date().getTime();
-
+        this.shipped = false;
         this.items = shoppingCart.items.map(i=>{
             return {
               product: {
@@ -16,8 +17,10 @@ export class Order{
                 price: i.price
               },
               quantity: i.quantity,
-              totalPrice: i.totalPrice
+              totalPrice: i.totalPrice,
+              category: i.category
             }
+            
           })
     }
 }

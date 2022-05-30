@@ -21,6 +21,8 @@
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/clients">Mis clientes</a>
           <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
+          <a class="dropdown-item" *ngIf="appUser.isAdmin" routerLink="/admin/orders">Orders</a>
+          <a class="dropdown-item" routerLink="/myOrders">My Orders </a>
 
           <ng-container *ngIf="appUser.isAdmin">
           </ng-container>

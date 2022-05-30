@@ -14,11 +14,8 @@ export class ClientService {
     return this.db.list('/clients');
   }
   getClientByUserId(userid){
-    console.log("recibido " + userid)
     return this.db.object('/clients/' + userid);
   }
-  getIssues(){
-    return 
-  }
+
 
 }

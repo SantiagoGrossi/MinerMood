@@ -1,3 +1,43 @@
-<p>
-  orders works!
-</p>
+<h1>Total orders {{this.orders.length}}</h1>
+<button class="btn btn-light btn-header" (click)="changeShippedFilter()"> {{shipped == true ? 'Enviado' : 'Deposito'}}</button>
+
+<div class="btn btn-light btn-header" (click)="filterByCategory(category.name)" *ngFor="let category of categories" role="group">{{category.name}}  {{category.productquantity}}</div>
+
+<div class="row col-10" >
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Order</th>
+        <th class="" style="width: 230px">Shipped</th>
+        <th class="" style="width: 200px">Date</th>
+        <th class="" style="width: 200px">Send order</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td></td>
+        <td><a href="" [routerLink]="['/order-success', order.$key]">{{order.$key}}</a></td>
+        <td>{{order.shipped == true ? 'Enviado' : 'Deposito'}}</td>
+        <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
+        <td><button class="btn btn-primary btn-sm" (click)="sendOrder(order.$key)" *ngIf="!order.shipped">Send order</button> <span *ngIf="order.shipped" class="badge badge-pill badge-success">Sended</span></td>
+       
+
+       
+        <td class="text-right"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right"></th>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+
+

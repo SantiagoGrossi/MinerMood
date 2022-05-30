@@ -1,3 +1,38 @@
-<p>
-  my-orders works!
-</p>
+<h1>My Orders {{this.filteredOrders.length}}</h1>
+<button class="btn btn-light" (click)="changeShippedFilter()"> {{shipped == true ? 'Enviado' : 'Deposito'}}</button>
+
+<div class="btn btn-light" (click)="filterByCategory(category.name)" *ngFor="let category of categories" role="group">{{category.name}}  {{category.productquantity}}</div>
+
+<div class="row col-10" >
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Order</th>
+        <th class="" style="width: 230px">Shipped</th>
+        <th class="" style="width: 200px">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of filteredOrders">
+        <td></td>
+        <td><a href="" [routerLink]="['/order-success', order.$key]">{{order.$key}}</a></td>
+        <td>{{order.shipped == true ? 'Enviado' : 'Deposito'}}</td>
+        <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
+       
+        <td class="text-right"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right"></th>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+
+

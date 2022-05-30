@@ -92,6 +92,8 @@ import { OrdersComponent } from './orders/orders.component';
       { path: 'admin/products/:id', component: ProductFormComponent, canActivate:[AuthGuard,AdminAuthGuard] },
       { path: 'admin/products', component: AdminProductsComponent },
       { path: 'check-out', component: CheckOutComponent, canActivate:[AuthGuard] },
+      { path: 'myOrders', component: MyOrdersComponent, canActivate:[AuthGuard] },
+      { path: 'admin/orders', component: OrdersComponent, canActivate:[AuthGuard,AdminAuthGuard] },
       { path: 'order-success/:id', component: OrderSuccessComponent, canActivate:[AuthGuard] },
 
       { path: 'shopping-cart', component: ShoppingCartComponent },

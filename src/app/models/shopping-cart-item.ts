@@ -5,7 +5,8 @@ export class ShoppingCartItem{
     title:string;
     imageUrl:string;
     price:number;
-    quantity:number
+    quantity:number;
+    category: string;
 
     constructor (init?: Partial<ShoppingCartItem>){
         Object.assign(this,init);
