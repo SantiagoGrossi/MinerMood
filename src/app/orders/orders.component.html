@@ -1,4 +1,4 @@
-<h1>Total orders {{this.orders.length}}</h1>
+<h1>Total orders {{this.filteredOrders.length}}</h1>
 <button class="btn btn-light btn-header" (click)="changeShippedFilter()"> {{shipped == true ? 'Enviado' : 'Deposito'}}</button>
 
 <div class="btn btn-light btn-header" (click)="filterByCategory(category.name)" *ngFor="let category of categories" role="group">{{category.name}}  {{category.productquantity}}</div>
@@ -16,12 +16,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let order of orders">
+      <tr *ngFor="let order of filteredOrders">
         <td></td>
         <td><a href="" [routerLink]="['/order-success', order.$key]">{{order.$key}}</a></td>
         <td>{{order.shipped == true ? 'Enviado' : 'Deposito'}}</td>
         <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
-        <td><button class="btn btn-primary btn-sm" (click)="sendOrder(order.$key)" *ngIf="!order.shipped">Send order</button> <span *ngIf="order.shipped" class="badge badge-pill badge-success">Sended</span></td>
+        <td><button class="btn btn-primary btn-sm" (click)="sendOrder(order.$key)" *ngIf="!order.shipped">Send order</button> <span (click)="sendOrder(order.$key)" *ngIf="order.shipped" class="badge badge-pill badge-success">Sended</span></td>
        
 
        

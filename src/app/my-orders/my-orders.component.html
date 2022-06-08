@@ -1,7 +1,35 @@
 <h1>My Orders {{this.filteredOrders.length}}</h1>
 <button class="btn btn-light" (click)="changeShippedFilter()"> {{shipped == true ? 'Enviado' : 'Deposito'}}</button>
 
-<div class="btn btn-light" (click)="filterByCategory(category.name)" *ngFor="let category of categories" role="group">{{category.name}}  {{category.productquantity}}</div>
+
+<div class="filtersHeader">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <div class="check" *ngFor="let category of categories">
+          <div class="category-container">
+            <div style="display:flex">
+              <h6>{{category.name}}</h6>
+              <input type="checkbox" class="checkCategory" (change)="filterByCategory(category.name,$event)"> 
+
+            </div>
+            
+            <p>products: {{category.productquantity}}</p> 
+            <p>orders: {{category.oquantity}}</p>
+          </div>
+          
+        </div>
+        
+        <button class="btn btn-light" (click)="clearFilters()" >Clear filters</button>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
 
 <div class="row col-10" >
   <table class="table">

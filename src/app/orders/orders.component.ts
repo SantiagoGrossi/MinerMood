@@ -32,12 +32,13 @@ export class OrdersComponent implements OnInit,OnDestroy {
   
         .subscribe(orders =>{
           this.categories = [];
-
           this.orders = orders;
+
+          this.filteredOrders = orders;
 
             
 
-            this.orders.forEach((order,index,ordersarray) => {
+            this.filteredOrders.forEach((order,index,ordersarray) => {
               order.items.forEach((item,index,itemsarray)=>{
 
                 let category = new Category(item.category,item.quantity);
@@ -66,13 +67,12 @@ export class OrdersComponent implements OnInit,OnDestroy {
 
   }
   sendOrder(key){
-    console.log(key)
     this.orderService.sendOrder(key);
   }
 
   changeShippedFilter(){
     this.shipped = !this.shipped;
-    this.orders = 
+    this.filteredOrders = 
           this.orders.filter(o => o.shipped === this.shipped);
   }
 

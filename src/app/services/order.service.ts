@@ -25,11 +25,10 @@ export class OrderService {
 
   sendOrder(key){
     let order$ = this.getOrder(key);
-    console.log(order$);
     order$.take(1).subscribe(order=>{
-
+      console.log(order)
       order$.update({
-          shipped: false
+          shipped: true
         });
   
     });

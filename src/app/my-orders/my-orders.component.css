@@ -1,3 +1,15 @@
 .btn{
     margin: 20px;
 }
+.input-group-text{
+    display: flex;
+}
+.check{
+    margin: 10px;
+}
+.category-container{
+    border-radius: 5px;
+    background-color: lightgreen;
+    color: #fff;
+    padding: 2px;
+}
