@@ -10,12 +10,12 @@
           <div class="category-container">
             <div style="display:flex">
               <h6>{{category.name}}</h6>
-              <input type="checkbox" class="checkCategory" (change)="filterByCategory(category.name,$event)"> 
+              <input type="checkbox" class="checkCategory" [checked]="category.checked" (change)="filterByCategory(category.name,$event)"> 
 
             </div>
             
             <p>products: {{category.productquantity}}</p> 
-            <p>orders: {{category.oquantity}}</p>
+          
           </div>
           
         </div>
@@ -38,6 +38,7 @@
         <th></th>
         <th>Order</th>
         <th class="" style="width: 230px">Shipped</th>
+        <th class="" style="width: 200px">Products of type</th>
         <th class="" style="width: 200px">Date</th>
       </tr>
     </thead>
@@ -46,6 +47,8 @@
         <td></td>
         <td><a href="" [routerLink]="['/order-success', order.$key]">{{order.$key}}</a></td>
         <td>{{order.shipped == true ? 'Enviado' : 'Deposito'}}</td>
+        <td class="text-center">{{order.items.length}}</td>
+
         <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
        
         <td class="text-right"></td>
