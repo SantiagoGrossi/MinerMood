@@ -19,7 +19,7 @@ export class OrderService {
     return this.db.list('/orders');
   }
 
-  private getOrder(orderId:string){
+  getOrder(orderId:string){
     return this.db.object('/orders/' + orderId );
   }
 
@@ -30,6 +30,16 @@ export class OrderService {
       order$.update({
           shipped: true
         });
+  
+    });
+
+
+  }
+
+  cancelOrder(key){
+    let order$ = this.getOrder(key);
+    order$.take(1).subscribe(order=>{
+      order$.remove();
   
     });
 

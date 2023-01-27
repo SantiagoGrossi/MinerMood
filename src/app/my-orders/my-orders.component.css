@@ -9,7 +9,9 @@
 }
 .category-container{
     border-radius: 5px;
-    background-color: lightgreen;
-    color: #fff;
+    color: #111;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
     padding: 2px;
+    padding: 0.5rem 0.75rem;
 }

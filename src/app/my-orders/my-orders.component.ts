@@ -35,7 +35,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
         .subscribe(orders =>{
           this.categories = [];
 
-          this.orders = orders.filter(o => o.userId === this.userId);;
+          this.orders = orders.filter(o => o.userId === this.userId);
           console.log(this.orders)
           this.filteredOrders = 
             this.orders.filter(o => o.userId === this.userId);
@@ -62,8 +62,14 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
               
 
            orders.map(or =>{
-             or.costo = "asd",
-             or.costo2 = "qwe"
+             let price = 0;
+             let totalItems = 0;
+             or.items.forEach(item => {
+               price = price + item.totalPrice,
+               totalItems = totalItems + item.quantity
+             });
+             or.totalPriceOrder = price;
+             or.totalItemsOrder = totalItems;
            });
 
         })
@@ -79,6 +85,9 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
 
   }
+  cancelOrder(key){
+    this.orderService.cancelOrder(key);
+  }
   clearFilters(){
     this.filteredOrders = this.orders.filter(o => o.userId === this.userId);
       this.categories.forEach(category => {
@@ -87,11 +96,13 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   }
 
   filterByCategory(category,event){
+    
 
     let categoryFounded = this.categories.find(actual=>actual.name==category);
       categoryFounded.checked = !categoryFounded.checked;
 
-      let atLeastOneCategoryChecked = this.categories.some(category => category.checked == true)
+      let atLeastOneCategoryChecked = this.categories.some(category => category.checked == true);
+
       this.filterOrders(atLeastOneCategoryChecked);
   
 
@@ -99,17 +110,14 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     }
 
     filterOrders(atLeastOneCategoryChecked){
-      if(atLeastOneCategoryChecked){
+     
         this.filteredOrders = this.orders.filter((order) => {
           return order.items.some((item) => {
-            let category= this.categories.find(category => category.name == item.category && category.checked == true);
+            let category= this.categories.find(category => category.name == item.category && category.checked == atLeastOneCategoryChecked);
             if(category)  return (item.category === category.name);
             return false;
           });
         });
-      }else{
-        this.clearFilters();
-      }
          
     }
 

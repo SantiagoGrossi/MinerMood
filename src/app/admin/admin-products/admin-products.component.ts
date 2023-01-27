@@ -21,7 +21,6 @@ export class AdminProductsComponent implements OnInit {
   products$;
 
   constructor(private productService: ProductService) { 
-    console.log(this.productService.getAll());
     this.subscription = this.productService.getAll()
       .subscribe(products =>{
         this.filteredProducts = this.products = products;
@@ -31,8 +30,6 @@ export class AdminProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.products);
-    console.log(this.productService.getAll());
   }
   private initializeTable( products: Product[]){
     this.tableResource = new DataTableResource(products);

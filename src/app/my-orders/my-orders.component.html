@@ -15,6 +15,7 @@
             </div>
             
             <p>products: {{category.productquantity}}</p> 
+            present in orders:
           
           </div>
           
@@ -31,15 +32,20 @@
 
 
 
-<div class="row col-10" >
+<div class="row col-12" >
   <table class="table">
     <thead>
       <tr>
         <th></th>
         <th>Order</th>
         <th class="" style="width: 230px">Shipped</th>
-        <th class="" style="width: 200px">Products of type</th>
+        <th class="" style="width: 220px">Total products type</th>
+        <th class="" style="width: 230px">Total price</th>
+        <th class="" style="width: 230px">Total items</th>
+
         <th class="" style="width: 200px">Date</th>
+        <th class="" style="width: 230px">Cancel order</th>
+
       </tr>
     </thead>
     <tbody>
@@ -48,9 +54,16 @@
         <td><a href="" [routerLink]="['/order-success', order.$key]">{{order.$key}}</a></td>
         <td>{{order.shipped == true ? 'Enviado' : 'Deposito'}}</td>
         <td class="text-center">{{order.items.length}}</td>
+        <td class="text-center">{{order.totalPriceOrder | currency : 'USD' : 'true'}}</td>
+
+        <td class="text-center">{{order.totalItemsOrder}}</td>
 
         <td>{{order.datePlaced | date: 'dd/MM/yyyy'}}</td>
-       
+        <td class="text-center">
+          <button class="btn btn-danger btn-sm" (click)="cancelOrder(order.$key)" *ngIf="order.shipped == false">Cancel order</button>
+          <span *ngIf="order.shipped">Sended.</span>
+        </td>
+
         <td class="text-right"></td>
       </tr>
     </tbody>

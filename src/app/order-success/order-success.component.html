@@ -1,3 +1,44 @@
-<p>
-  order-success works!
-</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{order.shipped === true ? 'https://media.istockphoto.com/id/1290078102/vector/free-shipping-and-delivery-icon-symbol.jpg?s=1024x1024&w=is&k=20&c=xkTGyzs3vojlQ3QiGm922WWPrRFQGqZX5ztUPCC04Bg=' : 'https://c8.alamy.com/comp/2H4PF1W/cancel-order-line-icon-package-not-delivered-delete-order-cardboard-box-with-x-sign-check-mark-error-symbol-shipping-not-available-vector-2H4PF1W.jpg'}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Order details</h5>
+          <p class="card-text">Shipped to {{order.shipping.address}} in {{order.shipping.city}}</p>
+          <p class="card-text">Will receive {{order.shipping.name}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let orderItem of order.items" class="list-group-item text-center">{{orderItem.product.title}}: x{{orderItem.quantity}} <span>${{orderItem.product.price}}</span></li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link" *ngIf="order.shipped === false">Cancel order</a>
+          <span class="badge badge-pill" [ngClass]="order.shipped === true ? 'badge-success' : 'badge-danger'">{{order.shipped === true ? 'Enviado' : 'En preparación' }}</span>
+          <span ></span>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col" *ngFor="let orderItem of order.items; let i = index;">
+          <div class="card" >
+            <img class="card-img-top" style=" object-fit: cover;" src="{{orderItem.product.imageUrl}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{orderItem.product.title}}</h5>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{orderItem.category}}</small>
+            </div>
+          </div>
+          <div *ngIf="(i+1) % 2 ===0" class="w-100"></div>
+        </div>
+        
+        
+      </div>
+    </div>
+      
+    
+  </div>
+</div>
